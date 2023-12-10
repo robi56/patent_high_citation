@@ -90,6 +90,3 @@ if __name__ == "__main__":
     
     
 
-
-    
-#!python patent_labelling.py --cite_dict_path '/home/rabindra_nandi/nandi/patent/p_dict_2000_and_after.json' --date_dict_path '/home/rabindra_nandi/nandi/patent/patent_with_date.json' --year_limit 10 --percentage 5 --save_file_path labels_10_5.json
