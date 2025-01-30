@@ -29,6 +29,35 @@ The script leverages **GNNExplainer** from **Torch Geometric** to analyze and vi
 
 This approach enhances model transparency, making it easier to understand how the GCN classifies nodes based on graph structure and features.  
 
+## **`fidelity_score_cal.py` - Overview**
+
+This script evaluates the fidelity of explanations generated for a Graph Neural Network (GNN) model using **GNNExplainer** and the **fidelity metric** from **Torch Geometric**. It trains a specified GNN model, generates node importance explanations, and calculates fidelity scores for the generated explanations.
+
+### **How It Works**
+
+1️⃣ **Model Training**  
+   - The script loads data (edges, features, and labels) from the specified paths and prepares the graph data. It then selects the GNN model (GCN, GAT, GTN, or GSAGE) and trains it on the provided data.  
+   - The model's performance is logged, including training loss and test accuracy.  
+
+2️⃣ **Explanation Generation**  
+   - Once the model is trained, **GNNExplainer** is used to generate feature importance explanations for the nodes.  
+   - The script selects a set of nodes (with class labels 0 and 1) and computes explanations for both the entire set of nodes and a subset of nodes.  
+
+3️⃣ **Fidelity Calculation**  
+   - The **fidelity** metric is calculated for the full explanation (for all nodes) and partial explanation (for selected nodes). The fidelity score measures how well the explanations align with the actual model behavior.  
+
+4️⃣ **Logging and Saving Results**  
+   - The fidelity scores and model information (including training details) are logged and saved in a result file.  
+
+
+###  **Sample Usage**
+
+Run the script to compute fidelity scores for a trained GNN model:
+
+```bash
+python fidelity_score_cal.py --feature_path gnn_data/features_A61_10y_10p_t0.68_d2v-v2.pt --edge_path gnn_data/features_A61_10y_10p_t0.68_d2v-v2.pt --label_path gnn_data/label_A61_5_10p.pt --result_path results/patentbert.txt
+```
+
 
 
 
